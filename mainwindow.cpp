@@ -170,10 +170,20 @@ namespace monitoring
     /// ------------------------------------------------------------------------
     void main_window::export_data( )
     {
-        business_logic::export_data(
-                                    this->_fs_tree->path_current( ),
-                                    this->_pn_buttons->files_filter( )
-                                   );
+        QCursor cursor = this->cursor( );
+        this->setCursor( QCursor( Qt::WaitCursor ) );
+        try
+        {
+            business_logic::export_data(
+                                        this->_fs_tree->path_current( ),
+                                        this->_pn_buttons->files_filter( )
+                                       );
+        }
+        catch(...)
+        {
+        }
+        this->unsetCursor();
+        this->setCursor( cursor );
     }
 
 }//namespace monitoring
