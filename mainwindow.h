@@ -11,7 +11,7 @@
 #include <QMainWindow>
 
 #include "treeview_filesystem.h"
-#include "listwidget_files_info.h"
+#include "treeview_fileinfo.h"
 #include "panel_buttons.h"
 
 namespace cfmc
@@ -83,7 +83,7 @@ namespace monitoring
         const int _STRETCH_BUTTONS_ = 1;
 
         treeview_filesystem *_fs_tree = nullptr;
-        listwidget_files_info *_lv_fileinfo = nullptr;
+        treeview_fileinfo *_lv_fileinfo = nullptr;
         panel_buttons *_pn_buttons = nullptr;
 
     };//class main_window

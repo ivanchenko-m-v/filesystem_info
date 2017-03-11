@@ -2,11 +2,12 @@
 /// ============================================================================
 ///		Author		: M. Ivanchenko
 ///		Date create	: 05-03-2017
-///		Date update	: 05-03-2017
+///		Date update	: 11-03-2017
 ///		Comment		:
 /// ============================================================================
 
-#include "listwidget_files_info.h"
+#include "treeview_fileinfo.h"
+#include "treeitem.h"
 
 namespace cfmc
 {
@@ -14,7 +15,7 @@ namespace cfmc
 namespace monitoring
 {
 /// ############################################################################
-///			class listwidget_files_info
+///			class treeview_files_info
 /// ############################################################################
 
     /// ========================================================================
@@ -22,17 +23,17 @@ namespace monitoring
     /// ========================================================================
 
     /// ------------------------------------------------------------------------
-    ///	listwidget_files_info( )
+    ///	treeview_files_info( )
     /// ------------------------------------------------------------------------
-    listwidget_files_info::listwidget_files_info(QWidget *parent) :
-        QTableWidget(parent)
+    treeview_fileinfo::treeview_fileinfo(QWidget *parent) :
+        QTreeView(parent)
     {
         this->initialize( );
     }
     /// ------------------------------------------------------------------------
-    ///	~listwidget_files_info( )
+    ///	~treeview_files_info( )
     /// ------------------------------------------------------------------------
-    listwidget_files_info::~listwidget_files_info( )
+    treeview_fileinfo::~treeview_fileinfo( )
     {
 
     }
@@ -47,8 +48,27 @@ namespace monitoring
     /// ------------------------------------------------------------------------
     ///	initialize( )
     /// ------------------------------------------------------------------------
-    void listwidget_files_info::initialize( )
+    void treeview_fileinfo::initialize( )
     {
+        this->_model = new treemodel_fileinfo( "" );
+        this->setModel( this->_model );
+    }
+
+    void treeview_fileinfo::append(list_fileinfo *list)
+    {
+        if( list == nullptr || !list->count() )
+        {
+            return;
+        }
+        this->_model->root()->remove_children( );
+        while( list->count( ) )
+        {
+            TreeItem *item  = list->front();
+            this->_model->root()->appendChild(item);
+            list->pop_front( );
+        }
+        delete list;
+        list = nullptr;
     }
 
     /// ========================================================================

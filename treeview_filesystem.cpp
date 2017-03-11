@@ -104,7 +104,7 @@ namespace monitoring
     {
         this->_fs_model = new QFileSystemModel( );
         this->_fs_model->setReadOnly(true);
-        this->_fs_model->setRootPath( QDir::root().absolutePath( ) );
+        this->_fs_model->setRootPath( QDir::root( ).absolutePath( ) );
 
         this->setModel( this->_fs_model );
     }

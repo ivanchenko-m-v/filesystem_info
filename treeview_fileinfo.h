@@ -2,13 +2,15 @@
 /// ============================================================================
 ///		Author		: M. Ivanchenko
 ///		Date create	: 05-03-2017
-///		Date update	: 05-03-2017
+///		Date update	: 11-03-2017
 ///		Comment		:
 /// ============================================================================
-#ifndef __LISTWIDGET_FILES_INFO_H__
-#define __LISTWIDGET_FILES_INFO_H__
+#ifndef __treeview_fileinfo_H__
+#define __treeview_fileinfo_H__
 
-#include <QTableWidget>
+#include <QTreeView>
+#include "treemodel_fileinfo.h"
+#include "business_logic.h"
 
 namespace cfmc
 {
@@ -17,9 +19,9 @@ namespace monitoring
 {
 
 /// ############################################################################
-///			class listwidget_files_info
+///			class treeview_fileinfo
 /// ############################################################################
-    class listwidget_files_info : public QTableWidget
+    class treeview_fileinfo : public QTreeView
     {
         Q_OBJECT
     /// ========================================================================
@@ -27,13 +29,13 @@ namespace monitoring
     /// ========================================================================
     private:
         /// --------------------------------------------------------------------
-        listwidget_files_info( const listwidget_files_info &rhs );
+        treeview_fileinfo( const treeview_fileinfo &rhs );
 
     public:
         /// --------------------------------------------------------------------
-        explicit listwidget_files_info(QWidget *parent = 0);
+        explicit treeview_fileinfo(QWidget *parent = 0);
         /// --------------------------------------------------------------------
-        virtual ~listwidget_files_info( );
+        virtual ~treeview_fileinfo( );
 
     /// ========================================================================
     ///		PROPERTIES
@@ -47,12 +49,16 @@ namespace monitoring
         /// --------------------------------------------------------------------
         void initialize( );
 
+    public:
+        /// --------------------------------------------------------------------
+        void append( list_fileinfo *list );
+
     /// ========================================================================
     ///		OPERATORS
     /// ========================================================================
     private:
         /// --------------------------------------------------------------------
-        listwidget_files_info& operator=( const listwidget_files_info &rhs );
+        treeview_fileinfo& operator=( const treeview_fileinfo &rhs );
 
     /// ========================================================================
     ///		SLOTS
@@ -65,7 +71,9 @@ namespace monitoring
     private:
         const int _COLUMNS_COUNT_ = 3;
 
-    };//class listwidget_files_info
+        treemodel_fileinfo *_model = nullptr;
+
+    };//class treeview_fileinfo
 /// ############################################################################
 /// ----------------------------------------------------------------------------
 
@@ -73,4 +81,4 @@ namespace monitoring
 
 }//namespace cfmc
 
-#endif // __LISTWIDGET_FILES_INFO_H__
+#endif // __treeview_fileinfo_H__

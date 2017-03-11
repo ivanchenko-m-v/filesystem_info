@@ -2,7 +2,7 @@
 /// ============================================================================
 ///		Author		: M. Ivanchenko
 ///		Date create	: 08-03-2017
-///		Date update	: 08-03-2017
+///		Date update	: 11-03-2017
 ///		Comment		:
 /// ============================================================================
 #include <QDir>
@@ -92,16 +92,15 @@ namespace monitoring
                                                     QDir::Files,
                                                     QDir::Name
                                                   );
-        if( !fi_files.count( ) )
+        qint32 f_count = fi_files.count( );
+        if( !f_count )
         {
             return;
         }
 
-        qint32 f_count = 0;
         qint64 f_size = 0;
         for( QFileInfo fi : fi_files )
         {
-            ++f_count;
             f_size += fi.size( );
         }
 

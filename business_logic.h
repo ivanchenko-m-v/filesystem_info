@@ -2,19 +2,24 @@
 /// ============================================================================
 ///		Author		: M. Ivanchenko
 ///		Date create	: 04-03-2017
-///		Date update	: 04-03-2017
+///		Date update	: 11-03-2017
 ///		Comment		:
 /// ============================================================================
 #ifndef __BUSINESS_LOGIC_H__
 #define __BUSINESS_LOGIC_H__
 
 #include <QObject>
+#include <QList>
+
+class TreeItem;
 
 namespace cfmc
 {
 
 namespace monitoring
 {
+
+using list_fileinfo = QList<TreeItem *>;
 
 /// ############################################################################
 ///			class business_logic
@@ -39,9 +44,12 @@ namespace monitoring
     /// ========================================================================
     public:
         /// --------------------------------------------------------------------
-        static QString choose_dir( );
+        static list_fileinfo* choose_dir( const QString &s_path, const QString &s_filter );
         /// --------------------------------------------------------------------
         static void export_data( const QString &s_path, const QString &s_filter );
+
+    private:
+        static void make_dir_info( list_fileinfo *list, TreeItem *diritem, const QString &s_path, const QString &s_filter);
 
     /// ========================================================================
     ///		OPERATORS

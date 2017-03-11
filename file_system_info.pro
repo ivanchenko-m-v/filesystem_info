@@ -19,12 +19,16 @@ SOURCES += main.cpp\
     treeview_filesystem.cpp \
     panel_buttons.cpp \
     business_logic.cpp \
-    listwidget_files_info.cpp \
-    dir_csv_exporter.cpp
+    dir_csv_exporter.cpp \
+    treeitem.cpp \
+    treemodel_fileinfo.cpp \
+    treeview_fileinfo.cpp
 
 HEADERS  += mainwindow.h \
     treeview_filesystem.h \
     panel_buttons.h \
     business_logic.h \
-    listwidget_files_info.h \
-    dir_csv_exporter.h
+    dir_csv_exporter.h \
+    treeitem.h \
+    treemodel_fileinfo.h \
+    treeview_fileinfo.h

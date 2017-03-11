@@ -2,7 +2,7 @@
 /// ============================================================================
 ///		Author		: M. Ivanchenko
 ///		Date create	: 04-03-2017
-///		Date update	: 08-03-2017
+///		Date update	: 11-03-2017
 ///		Comment		:
 /// ============================================================================
 
@@ -119,7 +119,7 @@ namespace monitoring
         //
         QObject::connect(
                         this->_pn_buttons, &panel_buttons::exit_app,
-                        QApplication::instance(), &QApplication::quit
+                        this, &main_window::close
                         );
     }
 
@@ -137,7 +137,7 @@ namespace monitoring
     /// ------------------------------------------------------------------------
     QWidget *main_window::init_lv_fileinfo( )
     {
-        this->_lv_fileinfo = new listwidget_files_info(this);
+        this->_lv_fileinfo = new treeview_fileinfo(this);
         return this->_lv_fileinfo;
     }
 
@@ -158,11 +158,29 @@ namespace monitoring
     /// ------------------------------------------------------------------------
     void main_window::choose_dir( )
     {
+        /*
         const QString& s_path = this->_fs_tree->path_current( this->_fs_tree->currentIndex( ) );
         QMessageBox::information(
                                 nullptr, tr("info"),
-                                s_path
+                                this->_fs_tree->path_current( )
                     );
+                    */
+        QCursor cursor = this->cursor( );
+        this->setCursor( QCursor( Qt::WaitCursor ) );
+        try
+        {
+            list_fileinfo *list =
+            business_logic::choose_dir(
+                                        this->_fs_tree->path_current( ),
+                                        this->_pn_buttons->files_filter( )
+                                       );
+            this->_lv_fileinfo->append(list);
+        }
+        catch(...)
+        {
+        }
+        this->unsetCursor();
+        this->setCursor( cursor );
     }
 
     /// ------------------------------------------------------------------------
