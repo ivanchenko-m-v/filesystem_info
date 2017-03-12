@@ -44,6 +44,7 @@
     Provides a simple tree model to show how to create and use hierarchical
     models.
 */
+#include <QVariant>
 
 #include "treeitem.h"
 #include "treemodel_fileinfo.h"
@@ -55,6 +56,10 @@ treemodel_fileinfo::treemodel_fileinfo(const QString &data, QObject *parent)
     QList<QVariant> rootData;
     rootData << tr("Folder") << tr("Files") << tr("Size");
     rootItem = new TreeItem(rootData);
+    /*
+    TreeItem *itemtest = new TreeItem(QList<QVariant>()<<"test"<<1<<12, rootItem);
+    rootItem->appendChild(itemtest);
+    */
 }
 //! [0]
 

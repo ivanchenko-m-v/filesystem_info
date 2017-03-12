@@ -2,7 +2,7 @@
 /// ============================================================================
 ///		Author		: M. Ivanchenko
 ///		Date create	: 11-03-2017
-///		Date update	: 11-03-2017
+///		Date update	: 12-03-2017
 ///		Comment		:
 /// ============================================================================
 
@@ -21,7 +21,7 @@ class treemodel_fileinfo : public QAbstractItemModel
     Q_OBJECT
 
 public:
-    treemodel_fileinfo(const QString &data, QObject *parent = 0);
+    treemodel_fileinfo( QObject *parent = 0 );
     ~treemodel_fileinfo();
 
     QVariant data(const QModelIndex &index, int role) const;
