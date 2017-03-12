@@ -50,7 +50,7 @@ namespace monitoring
     /// ------------------------------------------------------------------------
     void treeview_fileinfo::initialize( )
     {
-        this->_model = new treemodel_fileinfo( "" );
+        this->_model = new treemodel_fileinfo( );
         this->setModel( this->_model );
     }
 

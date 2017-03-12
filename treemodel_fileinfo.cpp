@@ -50,7 +50,7 @@
 #include "treemodel_fileinfo.h"
 
 //! [0]
-treemodel_fileinfo::treemodel_fileinfo(const QString &data, QObject *parent)
+treemodel_fileinfo::treemodel_fileinfo(QObject *parent)
     : QAbstractItemModel(parent)
 {
     QList<QVariant> rootData;
